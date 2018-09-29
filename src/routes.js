@@ -1,11 +1,8 @@
 import React from 'react';
+import Layout from './hoc/Layout/Layout';
 
 const Routes = props => {
-  return (
-    <div>
-      <h1>hello</h1>
-    </div>
-  );
+  return <Layout />;
 };
 
 export default Routes;
