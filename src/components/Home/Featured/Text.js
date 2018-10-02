@@ -9,15 +9,15 @@ class Text extends Component {
       show={true}
       start={{
         opacity: 0,
-        rotate: 0
+        rotate: 0,
       }}
       enter={{
         opacity: [1],
         rotate: [360],
         timing: {
           duration: 1000,
-          ease: easePolyOut
-        }
+          ease: easePolyOut,
+        },
       }}
     >
       {({ opacity, rotate }) => {
@@ -26,7 +26,7 @@ class Text extends Component {
             className="featured_number"
             style={{
               opacity,
-              transform: `translate(260px, 170px) rotateY(${rotate}deg)`
+              transform: `translate(260px, 170px) rotateY(${rotate}deg)`,
             }}
           >
             3
@@ -42,7 +42,7 @@ class Text extends Component {
       start={{
         opacity: 0,
         x: 503,
-        y: 450
+        y: 450,
       }}
       enter={{
         opacity: [1],
@@ -50,8 +50,8 @@ class Text extends Component {
         y: [450],
         timing: {
           duration: 500,
-          ease: easePolyOut
-        }
+          ease: easePolyOut,
+        },
       }}
     >
       {({ opacity, x, y }) => {
@@ -60,7 +60,7 @@ class Text extends Component {
             className="featured_first"
             style={{
               opacity,
-              transform: `translate(${x}px, ${y}px)`
+              transform: `translate(${x}px, ${y}px)`,
             }}
           >
             League
@@ -76,7 +76,7 @@ class Text extends Component {
       start={{
         opacity: 0,
         x: 503,
-        y: 586
+        y: 586,
       }}
       enter={{
         opacity: [1],
@@ -85,8 +85,8 @@ class Text extends Component {
         timing: {
           duration: 500,
           ease: easePolyOut,
-          delay: 300
-        }
+          delay: 300,
+        },
       }}
     >
       {({ opacity, x, y }) => {
@@ -95,7 +95,7 @@ class Text extends Component {
             className="featured_second"
             style={{
               opacity,
-              transform: `translate(${x}px, ${y}px)`
+              transform: `translate(${x}px, ${y}px)`,
             }}
           >
             Championships
@@ -109,15 +109,15 @@ class Text extends Component {
     <Animate
       show={true}
       start={{
-        opacity: 0
+        opacity: 0,
       }}
       enter={{
         opacity: [1],
         timing: {
           duration: 500,
           ease: easePolyOut,
-          delay: 800
-        }
+          delay: 800,
+        },
       }}
     >
       {({ opacity }) => {
@@ -127,7 +127,7 @@ class Text extends Component {
             style={{
               opacity,
               transform: `translate(550px, 201px)`,
-              background: `url(${featuredPlayer})`
+              background: `url(${featuredPlayer})`,
             }}
           />
         );

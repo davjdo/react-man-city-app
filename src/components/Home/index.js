@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Featured from './Featured';
 import Matches from './Matches';
+import MeetPlayers from './MeetPlayers';
 
 class Home extends Component {
   render() {
@@ -8,6 +9,7 @@ class Home extends Component {
       <div className="bck_blue">
         <Featured />
         <Matches />
+        <MeetPlayers />
       </div>
     );
   }
