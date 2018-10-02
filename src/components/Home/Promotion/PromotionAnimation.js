@@ -1,0 +1,31 @@
+import React, { Component } from 'react';
+import Zoom from 'react-reveal/Zoom';
+import Jersey from '../../../assets/images/jersey.jpg';
+
+class PromotionAnimation extends Component {
+  render() {
+    return (
+      <div className="promotion_animation">
+        <div className="left">
+          <Zoom>
+            <div>
+              <span>Win a</span>
+              <span>Jersey</span>
+            </div>
+          </Zoom>
+        </div>
+        <div className="right">
+          <Zoom>
+            <div
+              style={{
+                background: `url(${Jersey}) no-repeat`,
+              }}
+            />
+          </Zoom>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default PromotionAnimation;
