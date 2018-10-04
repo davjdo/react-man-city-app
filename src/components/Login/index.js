@@ -21,7 +21,6 @@ class Login extends Component {
           email: true
         },
         valid: false,
-        touched: false,
         validationMessage: ''
       },
       password: {
@@ -36,7 +35,6 @@ class Login extends Component {
           required: true
         },
         valid: false,
-        touched: false,
         validationMessage: ''
       }
     }
@@ -49,11 +47,9 @@ class Login extends Component {
     newElement.value = element.event.target.value;
 
     // Update validation
-    if (element.blur) {
-      let validData = validate(newElement);
-      newElement.valid = validData[0];
-      newElement.validationMessage = validData[1];
-    }
+    let validData = validate(newElement);
+    newElement.valid = validData[0];
+    newElement.validationMessage = validData[1];
 
     newElement.touched = element.blur;
     newFormdata[element.id] = newElement;
