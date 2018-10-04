@@ -20,6 +20,10 @@
     "no-console": "off",
     "strict": ["error", "global"],
     "curly": "warn",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "no-useless-escape": "off"
+    
   }
 }
+
+

@@ -6,7 +6,7 @@ import Slide from 'react-reveal/Slide';
 
 class Blocks extends Component {
   state = {
-    matches: [],
+    matches: []
   };
 
   componentDidMount() {

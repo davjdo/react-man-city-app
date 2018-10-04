@@ -16,7 +16,7 @@ class HomeCards extends Component {
         lastName: 'Nicolas',
         image: Otamendi,
         bottom: 90,
-        left: 300,
+        left: 300
       },
       {
         number: '22',
@@ -24,7 +24,7 @@ class HomeCards extends Component {
         lastName: 'Benjamin',
         image: Mendy,
         bottom: 60,
-        left: 200,
+        left: 200
       },
       {
         number: '4',
@@ -32,7 +32,7 @@ class HomeCards extends Component {
         lastName: 'Vincent',
         image: Kompany,
         bottom: 30,
-        left: 100,
+        left: 100
       },
       {
         number: '7',
@@ -40,9 +40,9 @@ class HomeCards extends Component {
         lastName: 'Serling',
         image: Sterling,
         bottom: 0,
-        left: 0,
-      },
-    ],
+        left: 0
+      }
+    ]
   };
 
   renderAnimateCards = () =>
@@ -52,15 +52,15 @@ class HomeCards extends Component {
         show={this.props.show}
         start={{
           bottom: 0,
-          left: 0,
+          left: 0
         }}
         enter={{
           bottom: [card.bottom],
           left: [card.left],
           timing: {
             duration: 500,
-            ease: easePolyOut,
-          },
+            ease: easePolyOut
+          }
         }}
       >
         {({ bottom, left }) => {
@@ -69,7 +69,7 @@ class HomeCards extends Component {
               style={{
                 position: 'absolute',
                 left,
-                bottom,
+                bottom
               }}
             >
               <PlayerCard

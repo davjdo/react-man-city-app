@@ -18,7 +18,7 @@ class PromotionAnimation extends Component {
           <Zoom>
             <div
               style={{
-                background: `url(${Jersey}) no-repeat`,
+                background: `url(${Jersey}) no-repeat`
               }}
             />
           </Zoom>

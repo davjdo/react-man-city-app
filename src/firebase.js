@@ -10,7 +10,7 @@ const firebaseConfig = {
   databaseURL: firebaseKeys.databaseURL,
   projectId: firebaseKeys.projectId,
   storageBucket: firebaseKeys.storageBucket,
-  messagingSenderId: firebaseKeys.messagingSenderId,
+  messagingSenderId: firebaseKeys.messagingSenderId
 };
 
 // Init firebase instance
@@ -23,8 +23,16 @@ firestore.settings(settings);
 // Connecting to Database
 const firebaseDB = firebase.database();
 const firebaseMatches = firebaseDB.ref('matches');
+const firebasePromotions = firebaseDB.ref('promotions');
 
 // Connecting to Firestore
 const firestoreMatches = firestore.collection('matches');
+const firestorePromotions = firestore.collection('promotions');
 
-export { firebase, firebaseMatches, firestoreMatches };
+export {
+  firebase,
+  firebaseMatches,
+  firestoreMatches,
+  firebasePromotions,
+  firestorePromotions
+};

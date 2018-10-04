@@ -10,23 +10,23 @@ class Stripes extends Component {
         left: 120,
         rotate: 25,
         top: -260,
-        delay: 0,
+        delay: 0
       },
       {
         background: '#ffffff',
         left: 360,
         rotate: 25,
         top: -397,
-        delay: 200,
+        delay: 200
       },
       {
         background: '#98c5e9',
         left: 600,
         rotate: 25,
         top: -498,
-        delay: 400,
-      },
-    ],
+        delay: 400
+      }
+    ]
   };
 
   renderStripes = () =>
@@ -39,7 +39,7 @@ class Stripes extends Component {
           opacity: 0,
           left: 0,
           rotate: 0,
-          top: 0,
+          top: 0
         }}
         enter={{
           background: [stripe.background],
@@ -50,13 +50,13 @@ class Stripes extends Component {
           timing: {
             delay: [stripe.delay],
             duration: 200,
-            ease: easePolyOut,
+            ease: easePolyOut
           },
           events: {
             end() {
               console.log('animation finished');
-            },
-          },
+            }
+          }
         }}
       >
         {({ background, opacity, left, rotate, top }) => {
@@ -66,7 +66,7 @@ class Stripes extends Component {
               style={{
                 background,
                 opacity,
-                transform: `rotate(${rotate}deg) translate(${left}px, ${top}px)`,
+                transform: `rotate(${rotate}deg) translate(${left}px, ${top}px)`
               }}
             />
           );

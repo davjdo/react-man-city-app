@@ -11,7 +11,7 @@ export const Tag = props => {
         padding: '5px 10px',
         display: 'inline-block',
         fontFamily: 'Righteous',
-        ...props.add,
+        ...props.add
       }}
     >
       {props.children}
@@ -29,7 +29,7 @@ export const firebaseLooper = snapshot => {
   snapshot.forEach(childSnapshot => {
     data.push({
       ...childSnapshot.val(),
-      id: childSnapshot.key,
+      id: childSnapshot.key
     });
   });
   return data;
@@ -40,7 +40,7 @@ export const firestoreLooper = snapshot => {
   snapshot.forEach(childSnapshot => {
     data.push({
       ...childSnapshot.data(),
-      id: childSnapshot.id,
+      id: childSnapshot.id
     });
   });
   return data;
@@ -52,4 +52,23 @@ export const reverseArray = actualArray => {
     reversedArray.push(actualArray[i]);
   }
   return reversedArray;
+};
+
+export const validate = element => {
+  let error = [true, ''];
+
+  if (element.validation.email) {
+    const valid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(
+      element.value
+    );
+    const message = `${!valid ? 'Must be a valid email' : ''}`;
+    error = !valid ? [valid, message] : error;
+  }
+
+  if (element.validation.required) {
+    const valid = element.value.trim() !== '';
+    const message = `${!valid ? 'This field is required' : ''}`;
+    error = !valid ? [valid, message] : error;
+  }
+  return error;
 };

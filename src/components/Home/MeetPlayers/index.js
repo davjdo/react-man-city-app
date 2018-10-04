@@ -6,7 +6,7 @@ import HomeCards from './Cards';
 
 class MeetPlayers extends Component {
   state = {
-    show: false,
+    show: false
   };
 
   render() {
@@ -15,7 +15,7 @@ class MeetPlayers extends Component {
         fraction={0.7}
         onReveal={() => {
           this.setState({
-            show: true,
+            show: true
           });
         }}
       >
@@ -36,7 +36,7 @@ class MeetPlayers extends Component {
                     color="#ffffff"
                     add={{
                       display: 'inline-block',
-                      marginBottom: '20px',
+                      marginBottom: '20px'
                     }}
                   >
                     Meet
@@ -49,7 +49,7 @@ class MeetPlayers extends Component {
                     color="#ffffff"
                     add={{
                       display: 'inline-block',
-                      marginBottom: '20px',
+                      marginBottom: '20px'
                     }}
                   >
                     The
@@ -62,7 +62,7 @@ class MeetPlayers extends Component {
                     color="#ffffff"
                     add={{
                       display: 'inline-block',
-                      marginBottom: '20px',
+                      marginBottom: '20px'
                     }}
                   >
                     Players
@@ -78,7 +78,7 @@ class MeetPlayers extends Component {
                     add={{
                       display: 'inline-block',
                       marginBottom: '27px',
-                      border: '1px solid #0e1731',
+                      border: '1px solid #0e1731'
                     }}
                   >
                     Meet them here
