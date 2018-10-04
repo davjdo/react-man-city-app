@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/app';
 import 'firebase/database';
 import 'firebase/firestore';
+import 'firebase/auth';
 import { firebaseKeys } from './firebaseKeys.js';
 
 const firebaseConfig = {
