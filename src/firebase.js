@@ -25,6 +25,7 @@ firestore.settings(settings);
 const firebaseDB = firebase.database();
 const firebaseMatches = firebaseDB.ref('matches');
 const firebasePromotions = firebaseDB.ref('promotions');
+const firebaseTeams = firebaseDB.ref('teams');
 
 // Connecting to Firestore
 const firestoreMatches = firestore.collection('matches');
@@ -35,5 +36,7 @@ export {
   firebaseMatches,
   firestoreMatches,
   firebasePromotions,
-  firestorePromotions
+  firestorePromotions,
+  firebaseTeams,
+  firebaseDB
 };
