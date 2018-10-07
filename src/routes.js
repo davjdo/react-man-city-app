@@ -11,11 +11,24 @@ import Dashboard from './components/Admin/Dashboard';
 import AdminMatches from './components/Admin/Matches';
 import AddEditMatch from './components/Admin/Matches/AddEditMatch';
 import AdminPlayers from './components/Admin/Players';
+import AddEditPlayer from './components/Admin/Players/AddEditPlayer';
 
 const Routes = props => {
   return (
     <Layout>
       <Switch>
+        <PrivateRoute
+          {...props}
+          path="/admin_players/edit_player/:id"
+          exact
+          component={AddEditPlayer}
+        />
+        <PrivateRoute
+          {...props}
+          path="/admin_players/edit_player"
+          exact
+          component={AddEditPlayer}
+        />
         <PrivateRoute
           {...props}
           path="/admin_players"
