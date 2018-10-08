@@ -39,11 +39,18 @@ class Fileuploader extends Component {
   };
 
   uploadAgain = () => {
-    this.setState({
-      name: '',
-      isUploading: false,
-      fileURL: ''
-    });
+    firebase
+      .storage()
+      .ref(this.props.dir)
+      .child(this.state.name)
+      .delete()
+      .then(() => {
+        this.setState({
+          name: '',
+          isUploading: false,
+          fileURL: ''
+        });
+      });
     this.props.resetImage();
   };
 

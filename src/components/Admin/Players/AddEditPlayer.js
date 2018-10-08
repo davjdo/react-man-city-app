@@ -99,8 +99,44 @@ class AddEditPlayer extends Component {
       });
     } else {
       // Edit player
+      firebaseDB
+        .ref(`players/${playerId}`)
+        .once('value')
+        .then(snapshot => {
+          const playerData = snapshot.val();
+          firebase
+            .storage()
+            .ref('players')
+            .child(playerData.image)
+            .getDownloadURL()
+            .then(url => {
+              this.updateFields(playerData, playerId, 'Edit Player', url);
+            })
+            .catch(error => {
+              this.updateFields(
+                { ...playerData, image: '' },
+                playerId,
+                'Edit Player',
+                ''
+              );
+            });
+        });
     }
   }
+
+  updateFields = (player, playerId, formType, defaultImg) => {
+    const newFormdata = { ...this.state.formdata };
+    for (let key in newFormdata) {
+      newFormdata[key].value = player[key];
+      newFormdata[key].valid = true;
+    }
+    this.setState({
+      playerId,
+      defaultImg,
+      formType,
+      formdata: newFormdata
+    });
+  };
 
   updateForm = (element, content = '') => {
     // Copy formdata and update formdate
@@ -123,6 +159,17 @@ class AddEditPlayer extends Component {
     });
   };
 
+  successForm = message => {
+    this.setState({
+      formSuccess: message
+    });
+    setTimeout(() => {
+      this.setState({
+        formSuccess: ''
+      });
+    }, 1000);
+  };
+
   onSubmit = event => {
     event.preventDefault();
     let dataToSubmit = {};
@@ -137,6 +184,17 @@ class AddEditPlayer extends Component {
       // submit form
       if (this.state.formType === 'Edit player') {
         // Edit player
+        firebaseDB
+          .ref(`players/${this.state.playerId}`)
+          .update(dataToSubmit)
+          .then(() => {
+            this.successForm('Updated correctly');
+          })
+          .catch(error => {
+            this.setState({
+              formError: true
+            });
+          });
       } else {
         firebasePlayers
           .push(dataToSubmit)
@@ -185,7 +243,6 @@ class AddEditPlayer extends Component {
                 resetImage={() => this.resetImage()}
                 filename={filename => this.storeFilename(filename)}
               />
-
               <FormField
                 id={'name'}
                 formdata={this.state.formdata.name}

@@ -195,13 +195,10 @@ class AddEditMatch extends Component {
     const newFormdata = { ...this.state.formdata };
     const newElement = { ...newFormdata[element.id] };
     newElement.value = element.event.target.value;
-
     // Update validation
     let validData = validate(newElement);
     newElement.valid = validData[0];
     newElement.validationMessage = validData[1];
-
-    newElement.touched = element.blur;
     newFormdata[element.id] = newElement;
     // adding to state.
     this.setState({
@@ -221,7 +218,6 @@ class AddEditMatch extends Component {
         newFormdata[key].config.options = teamOptions;
       }
     }
-
     this.setState({
       matchId,
       formType: type,
@@ -302,7 +298,6 @@ class AddEditMatch extends Component {
                 formdata={this.state.formdata.date}
                 change={element => this.updateForm(element)}
               />
-
               <div className="select_team_layout">
                 <div className="label_inputs">Local</div>
                 <div className="wrapper">
