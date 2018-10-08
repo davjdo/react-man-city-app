@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AdminLayout from '../../../hoc/AdminLayout';
 import FormField from '../../UI/FormFields';
 import { validate } from '../../UI/misc';
+import Fileuploader from '../../UI/Fileuploader';
 import { firebasePlayers, firebaseDB, firebase } from '../../../firebase';
 
 class AddEditPlayer extends Component {
@@ -27,12 +28,12 @@ class AddEditPlayer extends Component {
         validationMessage: '',
         showlabel: true
       },
-      lastName: {
+      lastname: {
         element: 'input',
         value: '',
         config: {
           label: 'Player Last Name',
-          name: 'lastName_input',
+          name: 'lastname_input',
           type: 'text'
         },
         validation: {
@@ -78,7 +79,14 @@ class AddEditPlayer extends Component {
         validationMessage: '',
         showlabel: true
       },
-      image: {}
+      image: {
+        element: 'image',
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
+      }
     }
   };
 
@@ -94,11 +102,15 @@ class AddEditPlayer extends Component {
     }
   }
 
-  updateForm = element => {
+  updateForm = (element, content = '') => {
     // Copy formdata and update formdate
     const newFormdata = { ...this.state.formdata };
     const newElement = { ...newFormdata[element.id] };
-    newElement.value = element.event.target.value;
+    if (content === '') {
+      newElement.value = element.event.target.value;
+    } else {
+      newElement.value = content;
+    }
     // Update validation
     let validData = validate(newElement);
     newElement.valid = validData[0];
@@ -123,11 +135,39 @@ class AddEditPlayer extends Component {
 
     if (formIsValid) {
       // submit form
+      if (this.state.formType === 'Edit player') {
+        // Edit player
+      } else {
+        firebasePlayers
+          .push(dataToSubmit)
+          .then(() => {
+            this.props.history.push('/admin_players');
+          })
+          .catch(error => {
+            this.setState({
+              formError: true
+            });
+          });
+      }
     } else {
       this.setState({
         formError: true
       });
     }
+  };
+
+  resetImage = () => {
+    const newFormdata = { ...this.state.formdata };
+    newFormdata['image'].value = '';
+    newFormdata['image'].valid = false;
+    this.setState({
+      defaultImg: '',
+      formdata: newFormdata
+    });
+  };
+
+  storeFilename = filename => {
+    this.updateForm({ id: 'image' }, filename);
   };
 
   render() {
@@ -137,14 +177,23 @@ class AddEditPlayer extends Component {
           <h2>{this.state.formType}</h2>
           <div>
             <form onSubmit={event => this.onSubmit(event)}>
+              <Fileuploader
+                dir="players"
+                tag={'Player image'}
+                defaultImg={this.state.defaultImg}
+                defaultImgName={this.state.formdata.image.value}
+                resetImage={() => this.resetImage()}
+                filename={filename => this.storeFilename(filename)}
+              />
+
               <FormField
                 id={'name'}
                 formdata={this.state.formdata.name}
                 change={element => this.updateForm(element)}
               />
               <FormField
-                id={'lastName'}
-                formdata={this.state.formdata.lastName}
+                id={'lastname'}
+                formdata={this.state.formdata.lastname}
                 change={element => this.updateForm(element)}
               />
               <FormField

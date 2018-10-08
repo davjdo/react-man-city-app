@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/app';
 import 'firebase/auth';
+import 'firebase/storage';
 import 'firebase/database';
 import 'firebase/firestore';
 import { firebaseKeys } from './firebaseKeys.js';
