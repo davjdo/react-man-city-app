@@ -3,6 +3,7 @@ import { CircularProgress } from '@material-ui/core';
 import { firebaseMatches } from '../../firebase';
 import { firebaseLooper, reverseArray } from '../UI/misc';
 import MatchesList from './MatchesList';
+import LeagueTable from './LeagueTable';
 
 class TheMatches extends Component {
   state = {
@@ -33,7 +34,9 @@ class TheMatches extends Component {
             <div className="match_filters" />
             <MatchesList matches={state.filterMatches} />
           </div>
-          <div className="right" />
+          <div className="right">
+            <LeagueTable />
+          </div>
         </div>
       </div>
     );
