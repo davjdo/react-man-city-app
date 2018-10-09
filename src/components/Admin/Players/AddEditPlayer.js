@@ -10,7 +10,7 @@ class AddEditPlayer extends Component {
     playerId: '',
     formType: '',
     formError: false,
-    formSucces: '',
+    formSuccess: '',
     defaultImg: '',
     formdata: {
       name: {
@@ -90,6 +90,20 @@ class AddEditPlayer extends Component {
     }
   };
 
+  updateFields = (player, playerId, formType, defaultImg) => {
+    const newFormdata = { ...this.state.formdata };
+    for (let key in newFormdata) {
+      newFormdata[key].value = player[key];
+      newFormdata[key].valid = true;
+    }
+    this.setState({
+      playerId,
+      defaultImg,
+      formType,
+      formdata: newFormdata
+    });
+  };
+
   componentDidMount() {
     const playerId = this.props.match.params.id;
     if (!playerId) {
@@ -123,20 +137,6 @@ class AddEditPlayer extends Component {
         });
     }
   }
-
-  updateFields = (player, playerId, formType, defaultImg) => {
-    const newFormdata = { ...this.state.formdata };
-    for (let key in newFormdata) {
-      newFormdata[key].value = player[key];
-      newFormdata[key].valid = true;
-    }
-    this.setState({
-      playerId,
-      defaultImg,
-      formType,
-      formdata: newFormdata
-    });
-  };
 
   updateForm = (element, content = '') => {
     // Copy formdata and update formdate
@@ -182,7 +182,7 @@ class AddEditPlayer extends Component {
 
     if (formIsValid) {
       // submit form
-      if (this.state.formType === 'Edit player') {
+      if (this.state.formType === 'Edit Player') {
         // Edit player
         firebaseDB
           .ref(`players/${this.state.playerId}`)
