@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import FormField from '../../UI/FormFields';
 import { validate } from '../../UI/misc';
-import { firebasePromotions, firestorePromotions } from '../../../firebase';
+import { firebasePromotions } from '../../../firebase';
 
 class Enroll extends Component {
   state = {

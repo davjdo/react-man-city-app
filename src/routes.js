@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from './hoc/Layout';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import PrivateRoute from './components/AuthRoutes/PrivateRoutes';
 import PublicRoute from './components/AuthRoutes/PublicRoutes';
 // Public routes
@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import TheTeam from './components/TheTeam';
 import TheMatches from './components/TheMatches';
+import NotFound from './components/NotFound';
 // Private routes
 import Dashboard from './components/Admin/Dashboard';
 import AdminMatches from './components/Admin/Matches';
@@ -89,6 +90,7 @@ const Routes = props => {
           exact
           component={TheMatches}
         />
+        <PublicRoute {...props} restricted={false} component={NotFound} />
       </Switch>
     </Layout>
   );

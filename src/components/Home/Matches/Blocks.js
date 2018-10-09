@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { firebaseMatches, firestoreMatches } from '../../../firebase';
-import { firebaseLooper, firestoreLooper, reverseArray } from '../../UI/misc';
+import { firebaseMatches } from '../../../firebase';
+import { firebaseLooper, reverseArray } from '../../UI/misc';
 import MatchesBlock from '../../UI/matches_block';
 import Slide from 'react-reveal/Slide';
 
@@ -16,13 +16,6 @@ class Blocks extends Component {
       .then(snapshot => {
         const matches = firebaseLooper(snapshot);
         this.setState({ matches: reverseArray(matches) });
-      });
-    firestoreMatches
-      .limit(4)
-      .get()
-      .then(snapshot => {
-        const matches = firestoreLooper(snapshot);
-        // this.setState({ matches: matches) });
       });
   }
 
